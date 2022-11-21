@@ -1,0 +1,21 @@
+name: release
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  release-stage:
+    runs-on: ubuntu-latest
+    environment: stag
+    steps:
+      - name: echo
+        run: echo "Hello World from stage"
+  release-prod:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: [release-stage]
+    steps:
+      - name: echo
+        run: echo "Hello World from stage"
+  
+
